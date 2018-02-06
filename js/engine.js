@@ -150,10 +150,10 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
         allEnemies.forEach(function(enemy) {
-            enemy.render();
+            enemy.render(this.x, this.y);
         });
 
-        player.render();
+        player.render(this.x, this.y);
     }
 
     /* This function does nothing but it could have been a good place to
@@ -173,7 +173,7 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
