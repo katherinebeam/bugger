@@ -9,7 +9,7 @@
  * drawn but that is not the case. What's really happening is the entire "scene"
  * is being drawn over and over, presenting the illusion of animation.
  *
- * This engine makes the canvas' context (ctx) object globally available to make 
+ * This engine makes the canvas' context (ctx) object globally available to make
  * writing app.js a little simpler to work with.
  */
 
@@ -79,7 +79,44 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+        checkForWin();
+    }
+
+    /* Detects whether an Enemy has collided with the Player.
+     * If so, sets the Player's dead proprty to true and reloads the page.
+     */
+    function checkCollisions() {
+        const playerLeft = player.x;
+        const playerRight = player.x + player.WIDTH;
+        const playerTop = player.y;
+        const playerBottom = player.y + player.HEIGHT;
+        allEnemies.forEach(function(enemy) {
+            const enemyLeft = enemy.x;
+            const enemyRight = enemy.x + enemy.WIDTH;
+            const enemyTop = enemy.y;
+            const enemyBottom = enemy.y + enemy.HEIGHT;
+            if (playerLeft < enemyRight &&
+                playerRight > enemyLeft &&
+                playerTop < enemyBottom &&
+                playerBottom > enemyTop) {
+                    player.dead = true;
+            }
+            if(player.dead) {
+                window.location.reload(true);
+            }
+        });
+    }
+
+    /* Checks if the player has made it past all the enemies.
+     * If so, updates the page to Congrats screen.
+     */
+    function checkForWin() {
+        if (player.y < 20) {
+            player.won = true;
+            const body = document.querySelector('body');
+            body.textContent = '';
+        }
     }
 
     /* This is called by the update function and loops through all of the
@@ -90,10 +127,12 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
-        });
-        player.update(dt);
+        if(player.won===false) {
+            allEnemies.forEach(function(enemy) {
+                enemy.update(dt);
+            });
+            player.update(dt);
+        }
     }
 
     /* This function initially draws the "game level", it will then call
@@ -117,7 +156,7 @@ var Engine = (function(global) {
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Before drawing, clear existing canvas
         ctx.clearRect(0,0,canvas.width,canvas.height)
 
