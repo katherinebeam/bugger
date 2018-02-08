@@ -1,6 +1,6 @@
-#Bugger
+# Bugger
 
-##Installation / Getting Started
+## Installation / Getting Started
 
 ```
 git clone git@github.com:katherinebeam/bugger.git
