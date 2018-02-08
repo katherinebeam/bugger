@@ -1,6 +1,18 @@
-frontend-nanodegree-arcade-game
-===============================
+#Bugger
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+##Installation / Getting Started
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+```
+git clone git@github.com:katherinebeam/bugger.git
+cd bugger
+open index.html
+```
+
+## How to Play
+
+The goal is to get your player from the bottom of the screen to the water at the top of the screen without running into any of the enemies (the bugs). Use the arrow keys to move your player left, right, up, and down the screen.
+
+## Learning Purpose
+
+I completed this project as part of the Udacity Front-End Web Developer Nanodegree. The purpose of this project was to use Object-Oriented Programming (OOP) to build a functional arcade-style game that can be played in the browser.
+
