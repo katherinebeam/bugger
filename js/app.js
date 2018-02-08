@@ -5,7 +5,7 @@ var Enemy = function(x, y) {
     // constant - height of enemy sprite
     this.HEIGHT = 66;
     // The image/sprite for our enemies
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'img/enemy-bug.png';
     // The Enemy's starting x position. Each Enemy should be offscreen at the start of the game.
     this.x = x;
     // The Enemy's starting y position
@@ -43,7 +43,7 @@ function Player() {
     this.WIDTH = 74;
     // constant - height of sprite
     this.HEIGHT = 89;
-    this.sprite = 'images/char-princess-girl.png';
+    this.sprite = 'img/char-princess-girl.png';
     // starting x position of Player
     this.x = 215;
     // starting y position of Player

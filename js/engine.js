@@ -114,9 +114,24 @@ var Engine = (function(global) {
     function checkForWin() {
         if (player.y < 20) {
             player.won = true;
-            const body = document.querySelector('body');
-            body.textContent = '';
+            buildWinScreen();
         }
+    }
+
+    function buildWinScreen() {
+        const body = document.querySelector('body');
+            body.textContent = '';
+            const congratsText = document.createElement('h1');
+            congratsText.textContent = 'You Win!!';
+            body.appendChild(congratsText);
+            const playAgainButton = document.createElement('button');
+            playAgainButton.classList.add('btn');
+            playAgainButton.classList.add('btn-success');
+            playAgainButton.textContent = 'Play Again';
+            playAgainButton.addEventListener('click', function() {
+                location.reload();
+            });
+            body.appendChild(playAgainButton);
     }
 
     /* This is called by the update function and loops through all of the
@@ -146,12 +161,12 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'img/water-block.png',   // Top row is water
+                'img/stone-block.png',   // Row 1 of 3 of stone
+                'img/stone-block.png',   // Row 2 of 3 of stone
+                'img/stone-block.png',   // Row 3 of 3 of stone
+                'img/grass-block.png',   // Row 1 of 2 of grass
+                'img/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
@@ -208,11 +223,11 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-princess-girl.png'
+        'img/stone-block.png',
+        'img/water-block.png',
+        'img/grass-block.png',
+        'img/enemy-bug.png',
+        'img/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
